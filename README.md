@@ -6,6 +6,8 @@ Celis et al. 2024, A versatile semi-automated image analysis workflow for time-l
 
 1. [Introduction](#Introduction)
 2. [Step 1 Renaming files](#Step 1)
+3. [Step 2](#Step 2)
+  * [Model training for image quality](##Model training for image quality)
 
 ## Introduction
 
@@ -24,3 +26,8 @@ Users may adapt the code to fit their specific needs. To run the code for each s
 ## Renaming files
 
 Before running the renaming R script, you must organize your images into folders such that all images from one camera trap are contained in a single folder. In our specific case, we had sites that had multiple cameras. For example, the Komagdalen site had eight cameras, and each camera station had a unique name (k1 - k8; Fig. 2). Before applying the classification workflow, all images should have unique names that correspond to the site, camera, and timestamp. We provide a script for renaming images that extracts the camera locations from the names of the folders in a folder structure, as suggested in Fig. 2.
+
+The image renaming script is: Step_1_Rename_Files.R.
+
+# Step 2
+## Model training for image quality
