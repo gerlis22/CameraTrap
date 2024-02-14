@@ -1,6 +1,6 @@
 # Image classification workflow guide.
 
-Celis et al. 2023, A versatile semiautomated image analysis workflow for time-lapsed camera trap image classification.
+Celis et al. 2024, A versatile semi-automated image analysis workflow for time-lapse camera trap image classification.
 
 ## Table of contents
 
