@@ -4,9 +4,9 @@ Celis et al. 2024, A versatile semi-automated image analysis workflow for time-l
 
 ## Table of contents
 
-1. [Introduction](#Introduction)
-2. [Step 1](#Step 1)
-3. [Step 2](#Step 2)
+1. [Introduction](##Introduction)
+2. [Step 1](##Step 1)
+3. [Step 2](##Step 2)
   * [Model training for image quality](#Model training for image quality)
 
 ## Introduction
