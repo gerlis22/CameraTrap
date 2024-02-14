@@ -45,8 +45,8 @@ predictions.yamal[, v_image_name := sapply(strsplit(as.character(file), split="/
 predictions.yamal[, class_id_model_step_2 := colnames(.SD)[max.col(.SD, ties.method = "first")], .SDcols = c("Bad", "Good")]
 
 # create class predictions using asymmetric criteria
-predictions.yamal[Bad >= 0.90, class_id_model_step_2 := "Bad"]
-predictions.yamal[Bad < 0.90, class_id_model_step_2 := "Good"]
+predictions.yamal[Bad >= 0.95, class_id_model_step_2 := "Bad"]
+predictions.yamal[Bad < 0.95, class_id_model_step_2 := "Good"]
 
 # Check if any images where not classified
 predictions.yamal[is.na(class_id_model_step_2) == T, .N]
