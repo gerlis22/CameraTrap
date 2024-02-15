@@ -5,12 +5,15 @@ Celis et al. 2024, A versatile semi-automated image analysis workflow for time-l
 ## Table of contents
 
 1. [Introduction](##Introduction)
-2. [Step 1](#Step-1-file-organization)
-3. [Step 2](#Step-2-image-quality)
-  * [Model training for image quality](#Model-training-for-image-quality)
-  * [Image classification for image quality](#Image-classification-for-image-quality)
-4. [Step 3](#Step-3-MegaDetector)
+2. [Step 1 file organization](#Step-1-file-organization)
+3. [Step 2 image quality](#Step-2-image-quality)
+  * [Model training](#Model-training)
   * [Image classification](#Image-classification)
+4. [Step 3 MegaDetector](#Step-3-MegaDetector)
+  * [Image classification](#Image-classification)
+5. [Step 4 False positive filter](#Step-4-False positive-filter)
+  * [Model training](#Model-training-1)
+  * [Image classification](#Image-classification-1)
 
 ## Introduction
 
@@ -37,14 +40,14 @@ The image renaming script is: Step_1_Rename_Files.R.
 
 
 ## Step 2 image quality
-### Model training for image quality
+### Model training
 Model training for image quality can be performed using users' images based on the two classes, Bad and Good, or can be trained to include additional classes of interest. For example, one may be interested in identifying if a lure bait is present in the image. The R script for model training is Step_2_A_Model_Training_ImageQuality.R. However, if you want to use our train model for image quality, proceed to the next section, “Image classification for image quality”.
 
 Model training requires you have manually classified images and separated them into individual folders. For example, our image quality model has two classes ‘Good’ and ‘Bad’ quality. In addition, you will need images for training the model, validation during training and test model once it has been trained (Fig. 3). We split the data such that 90% of image were used to train the model, 8% for validation and 2% to evaluate (test).
 
 Figure 3. Folder structure for Image quality training (2 classes).
 
-### Image classification for image quality
+### Image classification
 
 The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is Step_2_B_Image Classification.R and the model can be is: model_resnet50_ImageQuality.h5(Temporary location until available on Arctic Data Center). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
 The classification of each image can be set as the maximum value of prediction scoring, or one can set the classification based on a threshold. See example below.
@@ -70,3 +73,13 @@ After running Megadetector the json file with image scoring will be used to clas
 ### Cropping images
 
 All images that were classified by Megadetector to have an animal will be used to identify the species and the number of individuals in each image. In order to do so, each individual animal in the image need to be cropped and classified. Cropping of images uses python script provided by Megadetector: Step_4_A_Megadetector_Crop_Images.py.
+
+## Step 4 False positive filter
+### Model training
+
+Model training for species can be performed by users include species of interest. The R script for model is: Step_4_B_Crop_Training_Species.R However, if you would like to use our model, proceed to the next section, “Image classification for species”.
+Model training requires you have manually classified images and separated them into individual folders. For example, our image quality model has sixteen classes. In addition, you will need images for training the model, validation during training and test model once it has been trained (Fig. 4). We split the data such that 90% of images were used to train the model, 8% for validation and 2% to evaluate (test).
+
+### Image classification
+
+The image classification for species can be done with our model or with model created by user in the previous section. Our classification script is Step_4_C_Crop_Species_Classification.R and the model is: model_resnet50_Species.h5 (Temporary location until available on Arctic Data Center). This step will produce a csv file with file names, model scoring for each image and classification based on the scoring.
