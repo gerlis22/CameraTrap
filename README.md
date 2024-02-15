@@ -55,6 +55,14 @@ The classification of each image can be set as the maximum value of prediction s
 
 MegaDetector was used to classify images that contained an animal, person, vehicle, or were empty. The MegaDetector will require you to use Python and install the MegaDetector GitHub repo on your computer, following the instructions mentioned in the introduction. Use the following code to run a batch of images for classification: [detection/run_detector_batch.py](https://github.com/agentmorris/MegaDetector/blob/main/detection/run_detector_batch.py). We used MegaDetector’s v5.0 (MDv5a) trained model to classify images. This step will produce a json file with image file names, model scoring for each image.
 
+### Merging outputs
+[api/batch_processing/postprocessing/merge_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/api/batch_processing/postprocessing/merge_detections.py)
+
+### Repeat detection elimination
+[api/batch_processing/postprocessing/repeat_detection_elimination/find_repeat_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/api/batch_processing/postprocessing/repeat_detection_elimination/find_repeat_detections.py)
+
+[api/batch_processing/postprocessing/repeat_detection_elimination/remove_repeat_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/api/batch_processing/postprocessing/repeat_detection_elimination/remove_repeat_detections.py)
+
 ### Output processing
 
 After running Megadetector the json file with image scoring will be used to classify image and produce a csv file that will combine the image quality classifications. The R script for this step is: [Step_3_B_Megadetector_Classification_Output.R](Step_3_B_Megadetector_Classification_Output.R). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring in addition to the image quality.
