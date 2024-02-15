@@ -42,10 +42,12 @@ predictions[, v_image_name := sapply(strsplit(as.character(v_image_temp), split=
 #predictions[, v_species_model_max := do.call(pmax, .SD), .SDcols = c("Bait", "Bait_yamal", "Empty", "Rock", "alc_alc", "aqu_chr", "cor_cora", "cor_corn", "gul_gul", "hal_alb", "lag_mut", "lep_arc", "pic_pic", "ran_tar", "vul_lag", "vul_vul")]
 #predictions[, .N, by = .(v_species_model)]
 
-# Removed Bait, pic_pic
+# Removed Bait, alc_alc, aqu_chr, hal_alb that are not in Yamal
 predictions[, v_species_model := colnames(.SD)[max.col(.SD, ties.method = "first")], .SDcols = c("Bait_yamal", "Empty", "Rock", "cor_cora", "cor_corn", "gul_gul", "lag_mut", "lep_arc", "pic_pic", "ran_tar", "vul_lag", "vul_vul")]
 predictions[, v_species_model_max := do.call(pmax, .SD), .SDcols = c("Bait_yamal", "Empty", "Rock", "cor_cora", "cor_corn", "gul_gul", "lag_mut", "lep_arc", "pic_pic", "ran_tar", "vul_lag", "vul_vul")]
 
+# 
+predictions[, .N, by = .(v_species_model)]
 
 fwrite(predictions, "/Users/gerardocelis/Library/CloudStorage/OneDrive-UniversityofArkansas/Ungar Lab/CameraTraps/Manuscript/github_code/Yamal_classified_2022_Step_4.csv")
 

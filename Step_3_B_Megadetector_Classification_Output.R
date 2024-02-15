@@ -8,8 +8,8 @@ library(caret)
 library(tidyverse)
 
 
-#####################
-##### Varanger ######
+
+###### Yamal 
 
 # Import JSON data created by MegaDetector classification. Modified directory to include location of json file on your drive.
 json_data.aug.tile.merge <- jsonlite::read_json(path='/Users/gerardocelis/Library/CloudStorage/OneDrive-UniversityofArkansas/Ungar Lab/CameraTraps/image_computer_classification/PC_computer/merged_uark-celis-2024-01-30-aug_to_tiled-a-md_v5a_aug_0.04_0.9_5_0.5_filtering_2024.02.04.10.55.49.json', simplifyVector = TRUE)
@@ -30,7 +30,7 @@ d_unlist.aug.tile.merge_2 <- copy(dat.aug.tile.merge[N == 4,])
 d_unlist.aug.tile.merge_2 <- unnest(d_unlist.aug.tile.merge_2, images.detections, names_sep = ".")
 setnames(d_unlist.aug.tile.merge_2, c("images.detections.category", "images.detections.conf", "images.detections.bbox"), c("category", "conf", "bbox"))
 
-# Get non-detections informations
+# Get non-detections information
 d_no_detection.aug.tile.merge <- dat.aug.tile.merge[N == 0, on=.(images.file)]
 
 # Create list of data to merge
@@ -60,6 +60,7 @@ d_all[is.na(class_id_model_step_3)==T, class_id_model_step_3 := "Empty"]
 # check number of image per class
 d_all[, .N, by = .(class_id_model_step_3)]
 
+# Extract file name form image.file variable
 d_all[, v_image_name := sapply(strsplit(as.character(images.file), split="/"), "[", 2)]# Extracts site from image filename
 
 # create classification variables long format
