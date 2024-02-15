@@ -39,7 +39,7 @@ The image renaming script is: Step_1_Rename_Files.R.
 
 ## Step 2 image quality
 ### Model training
-Model training for image quality can be performed using users' images based on the two classes, Bad and Good, or can be trained to include additional classes of interest. For example, one may be interested in identifying if a lure bait is present in the image. The R script for model training is Step_2_A_Model_Training_ImageQuality.R. However, if you want to use our train model for image quality, proceed to the next section, “Image classification for image quality”.
+Model training for image quality can be performed using users' images based on the two classes, Bad and Good, or can be trained to include additional classes of interest. For example, one may be interested in identifying if a lure bait is present in the image. The R script for model training is [Step_2_A_Model_Training_ImageQuality.R](Step_1_Rename_Files.R). However, if you want to use our train model for image quality, proceed to the next section, “Image classification for image quality”.
 
 Model training requires you have manually classified images and separated them into individual folders. For example, our image quality model has two classes ‘Good’ and ‘Bad’ quality. In addition, you will need images for training the model, validation during training and test model once it has been trained (Fig. 3). We split the data such that 90% of image were used to train the model, 8% for validation and 2% to evaluate (test).
 
@@ -76,7 +76,7 @@ Model training requires you have manually classified images and separated them i
 
 The image classification for species can be done with our model or with model created by user in the previous section. Our classification script is Step_4_C_Crop_Species_Classification.R and the model is: model_resnet50_Species.h5 (Temporary location until available on Arctic Data Center). This step will produce a csv file with file names, model scoring for each image and classification based on the scoring.
 
-## Step 5 
+## Step 5 Check classification
 
 ### Image sorting and check
 
