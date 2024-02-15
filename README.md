@@ -52,15 +52,6 @@ Figure 3. Folder structure for Image quality training (2 classes).
 The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is Step_2_B_Image Classification.R and the model can be is: model_resnet50_ImageQuality.h5(Temporary location until available on Arctic Data Center). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
 The classification of each image can be set as the maximum value of prediction scoring, or one can set the classification based on a threshold. See example below.
 
-```batch
-# create class predictions using Maximum by column
-predictions.gaissene[, class_id_model_step_2 := colnames(.SD)[max.col(.SD, ties.method = "first")], .SDcols = c("Bad", "Good")]
-
-# create class predictions using asymmetric criteria
-predictions.gaissene[Bad >= 0.95, class_id_model_step_2 := "Bad"]
-predictions.gaissene[Bad < 0.95, class_id_model_step_2 := "Good"]
-```
-
 ## Step 3 MegaDetector
 ### Image classification
 
