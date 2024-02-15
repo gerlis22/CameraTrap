@@ -33,11 +33,9 @@ Users may adapt the code to fit their specific needs. To run the code for each s
 
 Before running the renaming R script, you must organize your images into folders such that all images from one camera trap are contained in a single folder. In our specific case, we had sites that had multiple cameras. For example, the Komagdalen site had eight cameras, and each camera station had a unique name (k1 - k8; Fig. 2). Before applying the classification workflow, all images should have unique names that correspond to the site, camera, and timestamp. We provide a script for renaming images that extracts the camera locations from the names of the folders in a folder structure, as suggested in Fig. 2.
 
-![Red bounding box on fox](images/Figure2.png)<br/>Figure 2. Folder structure for each camera station.
-
 The image renaming script is: Step_1_Rename_Files.R.
 
-
+![Figure2](images/Figure2.png)<br/>Figure 2. Folder structure for each camera station.
 
 ## Step 2 image quality
 ### Model training
@@ -45,7 +43,7 @@ Model training for image quality can be performed using users' images based on t
 
 Model training requires you have manually classified images and separated them into individual folders. For example, our image quality model has two classes ‘Good’ and ‘Bad’ quality. In addition, you will need images for training the model, validation during training and test model once it has been trained (Fig. 3). We split the data such that 90% of image were used to train the model, 8% for validation and 2% to evaluate (test).
 
-Figure 3. Folder structure for Image quality training (2 classes).
+![Figure3](images/Figure3.png)<br/>Figure 3. Folder structure for Image quality training (2 classes).
 
 ### Image classification
 
@@ -71,6 +69,19 @@ All images that were classified by Megadetector to have an animal will be used t
 Model training for species can be performed by users include species of interest. The R script for model is: Step_4_B_Crop_Training_Species.R However, if you would like to use our model, proceed to the next section, “Image classification for species”.
 Model training requires you have manually classified images and separated them into individual folders. For example, our image quality model has sixteen classes. In addition, you will need images for training the model, validation during training and test model once it has been trained (Fig. 4). We split the data such that 90% of images were used to train the model, 8% for validation and 2% to evaluate (test).
 
+![Figure4](images/Figure4.png)<br/>Figure 4. Folder structure for species model training (16 classes).
+
+
 ### Image classification
 
 The image classification for species can be done with our model or with model created by user in the previous section. Our classification script is Step_4_C_Crop_Species_Classification.R and the model is: model_resnet50_Species.h5 (Temporary location until available on Arctic Data Center). This step will produce a csv file with file names, model scoring for each image and classification based on the scoring.
+
+## Step 5 
+
+### Image sorting and check
+
+After images have been classified by image quality, presence and absence of humans and animals, and classified to species, the images need to be sorted based on classification for manual scoring to determine model performance. A random subset of images for all classifications will be selected for manual scoring. The R script for this step is: Step_5_A_sort_to_check.R
+
+### Compare Manual and Model scoring
+
+After manually checking images, the scoring of images will be compared to model scoring to evaluate workflow. The R script for this is Step_5_B_merge_manual_scored.R
