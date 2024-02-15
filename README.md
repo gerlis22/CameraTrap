@@ -47,17 +47,17 @@ Model training requires you have manually classified images and separated them i
 
 ### Image classification
 
-The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is Step_2_B_Image Classification.R and the model can be is: model_resnet50_ImageQuality.h5(Temporary location until available on Arctic Data Center). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
+The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is [Step_2_B_Image Classification.R](Step_2_B_Image Classification.R) and the model can be is: model_resnet50_ImageQuality.h5(Temporary location until available on Arctic Data Center). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
 The classification of each image can be set as the maximum value of prediction scoring, or one can set the classification based on a threshold. See example below.
 
 ## Step 3 MegaDetector
 ### Image classification
 
-MegaDetector was used to classify images that contained an animal, person, vehicle, or were empty. The MegaDetector will require you to use Python and install the MegaDetector GitHub repo on your computer, following the instructions mentioned in the introduction. Use the following code to run a batch of images for classification: Step_3_A_Megadetector_Classification.py. We used MegaDetector’s v5.0 (MDv5b) trained model to classify images. This step will produce a json file with image file names, model scoring for each image.
+MegaDetector was used to classify images that contained an animal, person, vehicle, or were empty. The MegaDetector will require you to use Python and install the MegaDetector GitHub repo on your computer, following the instructions mentioned in the introduction. Use the following code to run a batch of images for classification: [detection/run_detector_batch.py](https://github.com/agentmorris/MegaDetector/blob/main/detection/run_detector_batch.py). We used MegaDetector’s v5.0 (MDv5a) trained model to classify images. This step will produce a json file with image file names, model scoring for each image.
 
 ### Output processing
 
-After running Megadetector the json file with image scoring will be used to classify image and produce a csv file that will combine the image quality classifications. The R script for this step is: Step_3_B_Megadetector_Classification_Output.R. This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring in addition to the image quality.
+After running Megadetector the json file with image scoring will be used to classify image and produce a csv file that will combine the image quality classifications. The R script for this step is: [Step_3_B_Megadetector_Classification_Output.R](Step_3_B_Megadetector_Classification_Output.R). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring in addition to the image quality.
 
 ### Cropping images
 
@@ -66,7 +66,7 @@ All images that were classified by Megadetector to have an animal will be used t
 ## Step 4 False positive filter
 ### Model training
 
-Model training for species can be performed by users include species of interest. The R script for model is: Step_4_B_Crop_Training_Species.R However, if you would like to use our model, proceed to the next section, “Image classification for species”.
+Model training for species can be performed by users include species of interest. The R script for model is: [Step_4_B_Crop_Training_Species.R](Step_4_B_Crop_Training_Species.R). However, if you would like to use our model, proceed to the next section, “Image classification for species”.
 Model training requires you have manually classified images and separated them into individual folders. For example, our image quality model has sixteen classes. In addition, you will need images for training the model, validation during training and test model once it has been trained (Fig. 4). We split the data such that 90% of images were used to train the model, 8% for validation and 2% to evaluate (test).
 
 ![Figure4](images/Figure4.png)<br/>Figure 4. Folder structure for species model training (16 classes).
@@ -74,7 +74,7 @@ Model training requires you have manually classified images and separated them i
 
 ### Image classification
 
-The image classification for species can be done with our model or with model created by user in the previous section. Our classification script is Step_4_C_Crop_Species_Classification.R and the model is: model_resnet50_Species.h5 (Temporary location until available on Arctic Data Center). This step will produce a csv file with file names, model scoring for each image and classification based on the scoring.
+The image classification for species can be done with our model or with model created by user in the previous section. Our classification script is [Step_4_C_Crop_Species_Classification.R](Step_4_C_Crop_Species_Classification.R) and the model is: model_resnet50_Species.h5 (Temporary location until available on Arctic Data Center). This step will produce a csv file with file names, model scoring for each image and classification based on the scoring.
 
 ## Step 5 Check classification
 
