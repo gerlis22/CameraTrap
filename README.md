@@ -11,7 +11,7 @@ Celis et al. 2024, A versatile semi-automated image analysis workflow for time-l
   * [Image classification](#Image-classification)
 4. [Step 3 MegaDetector](#Step-3-MegaDetector)
   * [Image classification](#Image-classification)
-5. [Step 4 False positive filter](#Step-4-False positive-filter)
+5. [Step 4 False positive filter](#Step-4-False-positive-filter)
   * [Model training](#Model-training-1)
   * [Image classification](#Image-classification-1)
 
