@@ -5,10 +5,12 @@ Celis et al. 2024, A versatile semi-automated image analysis workflow for time-l
 ## Table of contents
 
 1. [Introduction](##Introduction)
-2. [Step 1](#Step-1)
-3. [Step 2](#Step-2)
+2. [Step 1](#Step-1-file-organization)
+3. [Step 2](#Step-2-image-quality)
   * [Model training for image quality](#Model-training-for-image-quality)
   * [Image classification for image quality](#Image-classification-for-image-quality)
+4. [Step 3](#Step-3-MegaDetector)
+  * [Image classification](#Image-classification)
 
 ## Introduction
 
@@ -23,14 +25,18 @@ Users may adapt the code to fit their specific needs. To run the code for each s
 •	Tensorflow for R; https://tensorflow.rstudio.com/install/
 •	MegaDetector; https://github.com/microsoft/CameraTraps/blob/main/megadetector.md#using-the-model
 
-## Step 1
+## Step 1 file organization
 ### Renaming files
 
 Before running the renaming R script, you must organize your images into folders such that all images from one camera trap are contained in a single folder. In our specific case, we had sites that had multiple cameras. For example, the Komagdalen site had eight cameras, and each camera station had a unique name (k1 - k8; Fig. 2). Before applying the classification workflow, all images should have unique names that correspond to the site, camera, and timestamp. We provide a script for renaming images that extracts the camera locations from the names of the folders in a folder structure, as suggested in Fig. 2.
 
+![Red bounding box on fox](images/Figure2.png)<br/>Figure 2. Folder structure for each camera station.
+
 The image renaming script is: Step_1_Rename_Files.R.
 
-## Step 2
+
+
+## Step 2 image quality
 ### Model training for image quality
 Model training for image quality can be performed using users' images based on the two classes, Bad and Good, or can be trained to include additional classes of interest. For example, one may be interested in identifying if a lure bait is present in the image. The R script for model training is Step_2_A_Model_Training_ImageQuality.R. However, if you want to use our train model for image quality, proceed to the next section, “Image classification for image quality”.
 
@@ -50,5 +56,17 @@ predictions.gaissene[, class_id_model_step_2 := colnames(.SD)[max.col(.SD, ties.
 # create class predictions using asymmetric criteria
 predictions.gaissene[Bad >= 0.95, class_id_model_step_2 := "Bad"]
 predictions.gaissene[Bad < 0.95, class_id_model_step_2 := "Good"]
-
 ```
+
+## Step 3 MegaDetector
+### Image classification
+
+MegaDetector was used to classify images that contained an animal, person, vehicle, or were empty. The MegaDetector will require you to use Python and install the MegaDetector GitHub repo on your computer, following the instructions mentioned in the introduction. Use the following code to run a batch of images for classification: Step_3_A_Megadetector_Classification.py. We used MegaDetector’s v5.0 (MDv5b) trained model to classify images. This step will produce a json file with image file names, model scoring for each image.
+
+### Output processing
+
+After running Megadetector the json file with image scoring will be used to classify image and produce a csv file that will combine the image quality classifications. The R script for this step is: Step_3_B_Megadetector_Classification_Output.R. This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring in addition to the image quality.
+
+### Cropping images
+
+All images that were classified by Megadetector to have an animal will be used to identify the species and the number of individuals in each image. In order to do so, each individual animal in the image need to be cropped and classified. Cropping of images uses python script provided by Megadetector: Step_4_A_Megadetector_Crop_Images.py.
