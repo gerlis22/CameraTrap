@@ -23,10 +23,10 @@ This document provides a guide for the image classification workflow (Fig. 1). G
 Figure 1. Time-lapse camera trap workflow. Data preparation and model steps are adapted from Böhner et al. (2022).
 
 Users may adapt the code to fit their specific needs. To run the code for each step of the workflow, you will need to install R, Python, and several packages/libraries. Please follow the instructions at each source, which will depend on your computer and operating system:
-•	R; https://cran.r-project.org, we also suggest installing an IDE such as Rstudio; https://posit.co/downloads/.
-•	Python; https://www.python.org
-•	Tensorflow for R; https://tensorflow.rstudio.com/install/
-•	MegaDetector; https://github.com/microsoft/CameraTraps/blob/main/megadetector.md#using-the-model
+  * R; https://cran.r-project.org, we also suggest installing an IDE such as Rstudio; https://posit.co/downloads/.
+  * Python; https://www.python.org
+  * Tensorflow for R; https://tensorflow.rstudio.com/install/
+  * MegaDetector; https://github.com/microsoft/CameraTraps/blob/main/megadetector.md#using-the-model
 
 ## Step 1 file organization
 ### Renaming files
