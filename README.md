@@ -33,7 +33,7 @@ Users may adapt the code to fit their specific needs. To run the code for each s
 
 Before running the renaming R script, you must organize your images into folders such that all images from one camera trap are contained in a single folder. In our specific case, we had sites that had multiple cameras. For example, the Komagdalen site had eight cameras, and each camera station had a unique name (k1 - k8; Fig. 2). Before applying the classification workflow, all images should have unique names that correspond to the site, camera, and timestamp. We provide a script for renaming images that extracts the camera locations from the names of the folders in a folder structure, as suggested in Fig. 2.
 
-The image renaming script is: Step_1_Rename_Files.R.
+The image renaming script is: [Step_1_Rename_Files.R](Step_1_Rename_Files.R).
 
 ![Figure2](images/Figure2.png)<br/>Figure 2. Folder structure for each camera station.
 
@@ -47,7 +47,7 @@ Model training requires you have manually classified images and separated them i
 
 ### Image classification
 
-The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is [Step_2_B_Image Classification.R](Step_2_B_Image Classification.R) and the model can be is: model_resnet50_ImageQuality.h5(Temporary location until available on Arctic Data Center). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
+The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is [Step_2_B_Image_Classification.R](Step_2_B_Image Classification.R) and the model can be is: model_resnet50_ImageQuality.h5(Temporary location until available on Arctic Data Center). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
 The classification of each image can be set as the maximum value of prediction scoring, or one can set the classification based on a threshold. See example below.
 
 ## Step 3 MegaDetector
@@ -61,7 +61,7 @@ After running Megadetector the json file with image scoring will be used to clas
 
 ### Cropping images
 
-All images that were classified by Megadetector to have an animal will be used to identify the species and the number of individuals in each image. In order to do so, each individual animal in the image need to be cropped and classified. Cropping of images uses python script provided by Megadetector: Step_4_A_Megadetector_Crop_Images.py.
+All images that were classified by Megadetector to have an animal will be used to identify the species and the number of individuals in each image. In order to do so, each individual animal in the image need to be cropped and classified. Cropping of images uses python script provided by Megadetector: [classification/crop_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/classification/crop_detections.py).
 
 ## Step 4 False positive filter
 ### Model training
@@ -80,8 +80,8 @@ The image classification for species can be done with our model or with model cr
 
 ### Image sorting and check
 
-After images have been classified by image quality, presence and absence of humans and animals, and classified to species, the images need to be sorted based on classification for manual scoring to determine model performance. A random subset of images for all classifications will be selected for manual scoring. The R script for this step is: Step_5_A_sort_to_check.R
+After images have been classified by image quality, presence and absence of humans and animals, and classified to species, the images need to be sorted based on classification for manual scoring to determine model performance. A random subset of images for all classifications will be selected for manual scoring. The R script for this step is: [Step_5_A_sort_to_check.R](Step_5_A_sort_to_check.R).
 
 ### Compare Manual and Model scoring
 
-After manually checking images, the scoring of images will be compared to model scoring to evaluate workflow. The R script for this is Step_5_B_merge_manual_scored.R
+After manually checking images, the scoring of images will be compared to model scoring to evaluate workflow. The R script for this is [Step_5_B_merge_manual_scored.R](Step_5_B_merge_manual_scored.R).
