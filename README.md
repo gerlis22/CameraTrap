@@ -49,7 +49,7 @@ Model training requires you have manually classified images and separated them i
 
 ### Image classification
 
-The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is [Step_2_B_Image_Classification.R](Step_2_B_Image Classification.R) and the model can be is: [model_resnet50_ImageQuality.h5](https://drive.google.com/file/d/1ABIpJXt4jdRzjM_kPJoNyjdbC84LgNjt/view?usp=sharing). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
+The image classification for image quality can be done with our model or with the model created by user in the previous section. Our classification script is [Step_2_B_Image_Classification.R](Step_2_B_Image_Classification.R) and the model can be is: [model_resnet50_ImageQuality.h5](https://drive.google.com/file/d/1ABIpJXt4jdRzjM_kPJoNyjdbC84LgNjt/view?usp=sharing). This step will produce a csv file with image file names, model scoring for each image and classification based on the scoring.
 The classification of each image can be set as the maximum value of prediction scoring, or one can set the classification based on a threshold. See example below.
 
 ## Step 3 MegaDetector
