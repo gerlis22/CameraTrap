@@ -76,7 +76,7 @@ All images that were classified by Megadetector to have an animal will be used t
 ## Step 4 False positive filter
 ### Model training
 
-Model training for species can be performed by users include species of interest. The R script for model is: [Step_4_B_Crop_Training_Species.R](Step_4_B_Crop_Training_Species.R). However, if you would like to use our model, proceed to the next section, “Image classification for species”.
+Model training for species can be performed by users include species of interest. The R script for model is: [Step_4_B_Crop_Training_FalsePositive.R](Step_4_B_Crop_Training_FalsePositive.R). However, if you would like to use our model, proceed to the next section, “Image classification for species”.
 Model training requires you have manually classified images and separated them into individual folders. For example, our image quality model has sixteen classes. In addition, you will need images for training the model, validation during training and test model once it has been trained (Fig. 4). We split the data such that 90% of images were used to train the model, 8% for validation and 2% to evaluate (test).
 
 ![Figure4](images/Figure4.png)<br/>Figure 4. Folder structure for species model training (16 classes).
@@ -84,7 +84,7 @@ Model training requires you have manually classified images and separated them i
 
 ### Image classification
 
-The image classification for species can be done with our model or with model created by user in the previous section. Our classification script is [Step_4_C_Crop_Species_Classification.R](Step_4_C_Crop_Species_Classification.R) and the model is: [model_resnet50_FalsePositive.h5](https://drive.google.com/file/d/1jKua9RyWclki7cVErjOGrZyy8c_fLRDv/view?usp=sharing). This step will produce a csv file with file names, model scoring for each image and classification based on the scoring.
+The image classification for species can be done with our model or with model created by user in the previous section. Our classification script is [Step_4_C_Crop_FalsePositive_Classification.R](Step_4_C_Crop_FalsePositive_Classification.R) and the model is: [model_resnet50_FalsePositive.h5](https://drive.google.com/file/d/1jKua9RyWclki7cVErjOGrZyy8c_fLRDv/view?usp=sharing). This step will produce a csv file with file names, model scoring for each image and classification based on the scoring.
 
 ## Step 5 Check classification
 
