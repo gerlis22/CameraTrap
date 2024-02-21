@@ -21,7 +21,7 @@ Celis et al. 2024, A versatile semi-automated image analysis workflow for time-l
 
 This repo contains a guide for the image classification workflow (Fig. 1) used in Celis et al 2024. General instructions are provided for each step of the workflow and there will be a corresponding file with code scripts or links to MegaDetector Python code. Each script will contain embedded instructions with more details for each step.
 
-<img align="center" src="images/Figure1.png" alt="Figure1" width="400"/><br/>Figure 1. Time-lapse camera trap workflow. Data preparation and model steps are adapted from Böhner et al. (2022).
+<p align="center" width="100%"><img src="images/Figure1.png" alt="Figure1" width="500"/></p><br/>Figure 1. Time-lapse camera trap workflow. Data preparation and model steps are adapted from Böhner et al. (2022).
 
 Users may adapt the code to fit their specific needs. To run the code for each step of the workflow, you will need to install R, Python, and several packages/libraries. Please follow the instructions at each source, which will depend on your computer and operating system:
   * R; https://cran.r-project.org, we also suggest installing an IDE such as Rstudio; https://posit.co/downloads/.
