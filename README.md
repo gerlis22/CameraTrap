@@ -54,15 +54,15 @@ The classification of each image can be set as the maximum value of prediction s
 ## Step 3 MegaDetector
 ### Image classification
 
-MegaDetector was used to classify images that contained an animal, person, vehicle, or were empty. The MegaDetector will require you to use Python and install the MegaDetector GitHub repo on your computer, following the instructions mentioned in the introduction. Use the following code to run a batch of images for classification: [detection/run_detector_batch.py](https://github.com/agentmorris/MegaDetector/blob/main/detection/run_detector_batch.py). We used MegaDetector’s v5.0 (MDv5a) trained model to classify images. This step will produce a json file with image file names, model scoring for each image.
+MegaDetector was used to classify images that contained an animal, person, vehicle, or were empty. The MegaDetector will require you to use Python and install the MegaDetector GitHub repo on your computer, following the instructions mentioned in the introduction. Use the following code to run a batch of images for classification: [detection/run_detector_batch.py](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/detection/run_detector_batch.py). We used MegaDetector’s v5.0 (MDv5a) trained model to classify images. This step will produce a json file with image file names, model scoring for each image.
 
 ### Merging outputs
-[api/batch_processing/postprocessing/merge_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/api/batch_processing/postprocessing/merge_detections.py)
+[api/batch_processing/postprocessing/merge_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/postprocessing/merge_detections.py)
 
 ### Repeat detection elimination
-[api/batch_processing/postprocessing/repeat_detection_elimination/find_repeat_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/api/batch_processing/postprocessing/repeat_detection_elimination/find_repeat_detections.py)
+[api/batch_processing/postprocessing/repeat_detection_elimination/find_repeat_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/postprocessing/repeat_detection_elimination/find_repeat_detections.py)
 
-[api/batch_processing/postprocessing/repeat_detection_elimination/remove_repeat_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/api/batch_processing/postprocessing/repeat_detection_elimination/remove_repeat_detections.py)
+[api/batch_processing/postprocessing/repeat_detection_elimination/remove_repeat_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/postprocessing/repeat_detection_elimination/remove_repeat_detections.py)
 
 ### Output processing
 
@@ -70,7 +70,7 @@ After running Megadetector the json file with image scoring will be used to clas
 
 ### Cropping images
 
-All images that were classified by Megadetector to have an animal will be used to identify the species and the number of individuals in each image. In order to do so, each individual animal in the image need to be cropped and classified. Cropping of images uses python script provided by Megadetector: [classification/crop_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/classification/crop_detections.py).
+All images that were classified by Megadetector to have an animal will be used to identify the species and the number of individuals in each image. In order to do so, each individual animal in the image need to be cropped and classified. Cropping of images uses python script provided by Megadetector: [classification/crop_detections.py](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/classification/crop_detections.py).
 
 ## Step 4 False positive filter
 ### Model training
